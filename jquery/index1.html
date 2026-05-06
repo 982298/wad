@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+
+    <!-- jQuery Mobile -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <style>
+        .box {
+            background: #4A6FB5;
+            color: white;
+            padding: 20px 0;
+            margin: 8px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .btn-box {
+            background: #E67E22;
+            color: white;
+            padding: 12px 0;
+            margin: 8px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div data-role="page">
+
+    <div data-role="header">
+        <h1>Departments</h1>
+    </div>
+
+    <div role="main" class="ui-content">
+
+        <!-- TOP ROW (Names) -->
+        <div class="ui-grid-d">
+
+            <div class="ui-block-a">
+                <div class="box">IT Engineering</div>
+            </div>
+
+            <div class="ui-block-b">
+                <div class="box">Computer Engineering</div>
+            </div>
+
+            <div class="ui-block-c">
+                <div class="box">E & TC Engineering</div>
+            </div>
+
+            <div class="ui-block-d">
+                <div class="box">Mechanical Engineering</div>
+            </div>
+
+            <div class="ui-block-e">
+                <div class="box">Electrical Engineering</div>
+            </div>
+
+        </div>
+
+        <!-- SECOND ROW (Buttons) -->
+        <div class="ui-grid-d">
+
+            <div class="ui-block-a">
+                <a href="detail1.html?name=IT">
+                    <div class="btn-box">view</div>
+                </a>
+            </div>
+
+            <div class="ui-block-b">
+                <a href="detail1.html?name=COMP">
+                    <div class="btn-box">view</div>
+                </a>
+            </div>
+
+            <div class="ui-block-c">
+                <a href="detail1.html?name=ETC">
+                    <div class="btn-box">view</div>
+                </a>
+            </div>
+
+            <div class="ui-block-d">
+                <a href="detail1.html?name=MECH">
+                    <div class="btn-box">view</div>
+                </a>
+            </div>
+
+            <div class="ui-block-e">
+                <a href="detail1.html?name=ELECT">
+                    <div class="btn-box">view</div>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+
+
+
+--- detail1.html----
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Department Details</title>
+
+    <!-- jQuery Mobile -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<style>
+    .content-box {
+        text-align: center;
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .content-box img {
+        width: 100%;
+        max-width: 500px;
+        max-height: 500px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .info {
+        color: #2C3E50;
+        font-weight: bold;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<div data-role="page">
+
+    <div data-role="header" style="background:#4A6FB5;color:white;">
+        <a href="home.html" data-icon="back">Back</a>
+        <h1 id="title">Details</h1>
+    </div>
+
+    <div role="main" class="ui-content content-box">
+        <img id="img">
+        <h2 id="name"></h2>
+        <p id="desc"></p>
+        <div class="info" id="extra"></div>
+    </div>
+
+</div>
+
+<script>
+$(document).on("pagecreate", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const dept = params.get("name");
+
+    $("#title").text(dept + " Department");
+
+    // EDIT ONLY THIS DATA
+    const deptData = {
+        "IT": {
+            desc: "Information Technology focuses on software development, networking, and modern computing.",
+            extra: "Labs: Programming Lab, Network Lab",
+            img: "2.jpg"
+        },
+        "COMP": {
+            desc: "Computer Engineering deals with coding, AI, data structures, and system design.",
+            extra: "Labs: AI Lab, Data Science Lab",
+            img: "https://via.placeholder.com/400x250?text=Computer+Engineering"
+        },
+        "ETC": {
+            desc: "Electronics & Telecommunication focuses on communication systems and electronics.",
+            extra: "Labs: VLSI Lab, Communication Lab",
+            img: "https://via.placeholder.com/400x250?text=E%26TC"
+        },
+        "MECH": {
+            desc: "Mechanical Engineering studies machines, thermodynamics, and manufacturing.",
+            extra: "Labs: Workshop, CAD Lab",
+            img: "https://via.placeholder.com/400x250?text=Mechanical"
+        },
+        "ELECT": {
+            desc: "Electrical Engineering deals with power systems and electrical circuits.",
+            extra: "Labs: Power System Lab, Machine Lab",
+            img: "https://via.placeholder.com/400x250?text=Electrical"
+        }
+    };
+
+    if (deptData[dept]) {
+        $("#name").text(dept);
+        $("#desc").text(deptData[dept].desc);
+        $("#extra").text(deptData[dept].extra);
+        $("#img").attr("src", deptData[dept].img);
+    } else {
+        $("#name").text("Department not found");
+    }
+
+});
+</script>
+
+</body>
+</html>
