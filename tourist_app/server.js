@@ -16,3 +16,11 @@ const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
+
+
+
+steps 
+
+npm init -y
+npm install express
+node server.js
