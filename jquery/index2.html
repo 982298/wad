@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Menu</title>
+
+    <!-- jQuery Mobile -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <style>
+    body {
+        background-color: #f8f8f8;
+    }
+
+    .menu-box {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .menu-box img {
+        width: 50%;
+        height: 200px;          /* FIXED HEIGHT */
+        object-fit: cover;      /* PREVENT DISTORTION */
+        border-radius: 10px;
+    }
+
+    .menu-title {
+        margin-top: 8px;
+        font-weight: bold;
+        color: #333;
+    }
+</style>
+</head>
+
+<body>
+
+<div data-role="page">
+
+    <div data-role="header" style="background:#E74C3C;color:white;">
+        <h1>Restaurant Menu</h1>
+    </div>
+
+    <div role="main" class="ui-content">
+
+        <!-- 2 Column Grid -->
+        <div class="ui-grid-a">
+
+            <div class="ui-block-a menu-box">
+                <a href="details.html?item=Pizza">
+                    <img src="2.jpg">
+                    <div class="menu-title">Pizza</div>
+                </a>
+            </div>
+
+            <div class="ui-block-b menu-box">
+                <a href="details.html?item=Burger">
+                    <img src="https://via.placeholder.com/200x100?text=Burger">
+                    <div class="menu-title">Burger</div>
+                </a>
+            </div>
+
+            <div class="ui-block-a menu-box">
+                <a href="details.html?item=Pasta">
+                    <img src="https://via.placeholder.com/200x100?text=Pasta">
+                    <div class="menu-title">Pasta</div>
+                </a>
+            </div>
+
+            <div class="ui-block-b menu-box">
+                <a href="details.html?item=Drinks">
+                    <img src="https://via.placeholder.com/200x100?text=Drinks">
+                    <div class="menu-title">Drinks</div>
+                </a>
+            </div>
+
+            <div class="ui-block-a menu-box">
+                <a href="details.html?item=Desserts">
+                    <img src="https://via.placeholder.com/200x100?text=Desserts">
+                    <div class="menu-title">Desserts</div>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+
+
+--- details.html----
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Details</title>
+
+    <!-- jQuery Mobile -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<style>
+    .content-box {
+        text-align: center;
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .content-box img {
+        width: 100%;
+        max-width: 500px;   /* LIMIT SIZE */
+        max-height: 500px;  /* LIMIT HEIGHT */
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .price {
+        color: #E74C3C;
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<div data-role="page">
+
+    <div data-role="header" style="background:#E74C3C;color:white;">
+        <a href="menu.html" data-icon="back">Back</a>
+        <h1 id="title">Details</h1>
+    </div>
+
+    <div role="main" class="ui-content content-box">
+        <img id="img">
+        <h2 id="name"></h2>
+        <p id="desc"></p>
+        <div class="price" id="price"></div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        const params = new URLSearchParams(window.location.search);
+        const item = params.get("item");
+
+        $("#title").text(item);
+
+        // EDIT ONLY THIS DATA
+        const menuData = {
+            "Pizza": {
+                desc: "Cheesy delight with fresh toppings",
+                price: "₹200",
+                img: "2.jpg"
+            },
+            "Burger": {
+                desc: "Crispy veg burger with sauces",
+                price: "₹120",
+                img: "2.jpg"
+            },
+            "Pasta": {
+                desc: "Italian pasta with creamy sauce",
+                price: "₹180",
+                img: "https://via.placeholder.com/400x200?text=Pasta"
+            },
+            "Drinks": {
+                desc: "Refreshing beverages",
+                price: "₹80",
+                img: "https://via.placeholder.com/400x200?text=Drinks"
+            },
+            "Desserts": {
+                desc: "Sweet treats and cakes",
+                price: "₹150",
+                img: "https://via.placeholder.com/400x200?text=Desserts"
+            }
+        };
+
+        if (menuData[item]) {
+            $("#name").text(item);
+            $("#desc").text(menuData[item].desc);
+            $("#price").text(menuData[item].price);
+            $("#img").attr("src", menuData[item].img);
+        }
+
+    });
+</script>
+
+</body>
+</html>
