@@ -49,3 +49,19 @@ if __name__ == "__main__":
 
 fastapi
 uvicorn
+
+
+
+
+
+
+commands 
+
+
+docker build -t fastapi-app .
+
+docker run -d -p 80:80 --name mycontainer fastapi-app
+
+http://localhost
+
+http://localhost/items/1
