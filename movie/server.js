@@ -16,3 +16,11 @@ const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
+
+
+// npm install
+// npm start
+
+or 
+// npm init -y
+// node server.js
