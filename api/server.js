@@ -46,11 +46,26 @@ app.listen(3000, () => {
 
 db.js
 
+// const mongoose = require("mongoose");
+
+// mongoose.connect("mongodb://127.0.0.1:27017/collegeDB")
+// .then(() => console.log("MongoDB Connected"))
+// .catch((err) => console.log(err));
+
+
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://127.0.0.1:27017/collegeDB")
+mongoose.connect("mongodb+srv://23123070dj_db_user:OeVYGETCIfDYGfSY@cluster0.ddsuzd8.mongodb.net/?appName=Cluster0")
 .then(() => console.log("MongoDB Connected"))
 .catch((err) => console.log(err));
+
+
+
+
+
+
+// 23123070dj_db_user
+// OeVYGETCIfDYGfSY
 
 
 
